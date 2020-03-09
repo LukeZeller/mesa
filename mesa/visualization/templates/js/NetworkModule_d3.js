@@ -24,6 +24,10 @@ var NetworkModule = function(svg_width, svg_height) {
         }));
 
     this.render = function(data) {
+        // Erase previous d3 geometry before re-rendering
+        svg.selectAll("circle").remove();
+        svg.selectAll("line").remove();
+        
         var graph = JSON.parse(JSON.stringify(data));
 
         var simulation = d3.forceSimulation(graph.nodes)
